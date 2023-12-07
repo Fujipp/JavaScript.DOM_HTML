@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Animated Progress Bars</title>
+    <style>
+      .skill-box {
+        min-width: 200px;
+        width: 100%;
+        order: 1;
+        width: 200px;
+        background-color: white;
+        border-radius: 15px;
+        padding-top: 10px;
+        padding: 20px;
+        margin: 50px;
+        box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+      }
+
+      .skill-box h3 {
+        font-family: "Kanit", sans-serif !important;
+        color: #03a9f4;
+        text-align: center;
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
+
+      .skill-box p {
+        font-family: "Kanit", sans-serif !important;
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 1px;
+      }
+
+      .skill-box .box {
+        width: 100%;
+        margin: 10px 0px;
+      }
+
+      .box .progress_bar_box {
+        display: flex;
+        align-items: center;
+      }
+
+      .box .progress_bar_box .progress_bar {
+        width: 100%;
+        height: 10px;
+        background-color: #f2f2f2;
+        border-radius: 100px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .box .progress_bar_box .progress_bar .line {
+        position: absolute;
+        width: 0%;
+        height: 100%;
+        background-color: #03a9f4;
+        border-radius: 100px;
+        transition: 0.2s;
+      }
+
+      .box .progress_bar_box .increasing_percentage {
+        margin-left: 10px;
+        font-size: 15px;
+      }
+
+      .box .progress_bar_box .total_percentage {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="skill-box">
+      <h3>Skills</h3>
+      <div class="box">
+        <p>New Skill 1</p>
+        <div class="progress_bar_box">
+          <div class="progress_bar">
+            <span class="line" style="width: 45%"></span>
+          </div>
+          <p class="increasing_percentage">45%</p>
+          <div class="total_percentage total_percentage_1">45%</div>
+        </div>
+      </div>
+      <div class="box">
+        <p>New Skill 2</p>
+        <div class="progress_bar_box">
+          <div class="progress_bar">
+            <span class="line" style="width: 20%"></span>
+          </div>
+          <p class="increasing_percentage">20%</p>
+          <div class="total_percentage total_percentage_2">20%</div>
+        </div>
+      </div>
+      <div class="box">
+        <p>New Skill 3</p>
+        <div class="progress_bar_box">
+          <div class="progress_bar">
+            <span class="line" style="width: 60%"></span>
+          </div>
+          <p class="increasing_percentage">60%</p>
+          <div class="total_percentage total_percentage_3">60%</div>
+        </div>
+      </div>
+      <div class="box">
+        <p>New Skill 4</p>
+        <div class="progress_bar_box">
+          <div class="progress_bar">
+            <span class="line" style="width: 60%"></span>
+          </div>
+          <p class="increasing_percentage">60%</p>
+          <div class="total_percentage total_percentage_4">60%</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let boxes = document.querySelectorAll(".box");
+
+      window.onload = function () {
+        setTimeout(() => {
+          loadBars();
+        }, 1000);
+      };
+
+      function loadBars() {
+        boxes.forEach((box) => {
+          let line = box.querySelector(".line");
+          let increasingPercentage = box.querySelector(
+            ".increasing_percentage"
+          );
+          let totalPercentage = box.querySelector(
+            ".total_percentage"
+          );
+
+          let targetPercentage = parseInt(totalPercentage.innerHTML);
+
+          let p = 0;
+          let myInterval = setInterval(() => {
+            p++;
+            line.style.width = p + "%";
+            increasingPercentage.innerHTML = p + "%";
+            if (p === targetPercentage) {
+              clearInterval(myInterval);
+              totalPercentage.style.display = "none";
+            }
+          }, 25);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Size Test</title>
+    <style>
+        h1 {
+            font-weight: bolder;
+            color: darkred;
+        }
+        .choice li {
+            list-style-type: none;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="heading">Test Font Size</h1>
+
+<ul class="choice">
+    <li>12 px <button onclick="selectFontSize(12)">select</button></li>
+    <li>14 px <button onclick="selectFontSize(14)">select</button></li>
+    <li>16 px <button onclick="selectFontSize(16)">select</button></li>
+    <li>18 px <button onclick="selectFontSize(18)">select</button></li>
+    <li>20 px <button onclick="selectFontSize(20)">select</button></li>
+    <li>22 px <button onclick="selectFontSize(22)">select</button></li>
+    <li>24 px <button onclick="selectFontSize(24)">select</button></li>
+</ul>
+
+<script>
+    // Function to set the font size and save it to localStorage
+    function selectFontSize(fontSize) {
+        document.getElementById('heading').style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+    }
+
+    // Function to load the selected font size from localStorage on page load
+    window.onload = function () {
+        var savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) {
+            document.getElementById('heading').style.fontSize = savedFontSize + 'px';
+        }
+    };
+</script>
+
+</body>
+</html>

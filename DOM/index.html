@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        border: 2px solid #dedede;
+        padding: 15px;
+        margin: 15px;
+      }
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        max-width: 600px;
+        font-family: sans-serif;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OMEGA 369</h1>
+    <p>The price of Game ruby</p>
+    <h2>Types of OMEGA</h2>
+    <ul>
+      <li>250 Bath</li>
+      <li id="yellow">500 Bath</li>
+      <li>750 Bath</li>
+      <li>1000 Bath</li>
+    </ul>
+  </body>
+  <script>
+        const messageH1 = document.getElementsByTagName("h1")[0];
+        const messageP = document.getElementsByTagName("p")[0];
+        const messageUl = document.getElementsByTagName("ul")[0];
+
+        for (let element of messageUl.children) {
+            element.style.background = 'red'
+        }
+
+        for (let element of messageP.childNodes) {
+            console.log(element)
+        }
+
+        let msg = document.getElementById('yellow')
+        msg.style.background = 'green'
+
+        document.body.children[3].lastElementChild.style.background ='blue'
+        document.body.children[3].querySelectorAll("li")[2].style.background = 'pink';
+
+
+        const fiveb = messageUl.children[1]
+
+  </script>
+  <script type="module"></script>
+</html>

@@ -1,0 +1,19 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+.message {
+    text-align: center;
+}
+
+.message p {
+    border: 1px ridge black;
+    padding: 2rem;
+    margin: 2rem;
+}
