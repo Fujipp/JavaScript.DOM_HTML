@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .todo-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      input[type="text"] {
+        width: 70%;
+        padding: 8px;
+        margin: 10px 0;
+      }
+
+      button {
+        padding: 8px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+      }
+
+      .completed {
+        text-decoration: line-through;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todo-container">
+      <h1>Todo App</h1>
+      <input type="text" id="newTodo" placeholder="Add a new todo" />
+      <button id="addButton">Add</button>
+      <ul id="todoList">
+        <!-- Todo items will be added dynamically here -->
+      </ul>
+    </div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var addButton = document.getElementById('addButton');
+    var newTodoInput = document.getElementById('newTodo');
+    var todoList = document.getElementById('todoList');
+
+    addButton.addEventListener('click', function() {
+        var todoText = newTodoInput.value;
+        if (todoText.trim() !== '') {
+            addTodoItem(todoText);
+            newTodoInput.value = '';
+        }
+    });
+
+    function addTodoItem(text) {
+        var li = document.createElement('li');
+        li.textContent = text;
+
+        li.addEventListener('click', function() {
+            li.classList.toggle('completed');
+        });
+
+        todoList.appendChild(li);
+    }
+});
+
+  </script>
+  <!-- <script>
+    // เพิ่ม Todo Item:
+    // เพื่อเพิ่ม Todo Item ใน DOM, เราใช้ JavaScript เพื่อสร้าง Element ใหม่ (เช่น <li> สำหรับรายการ) และแทรกไปยังตำแหน่งที่ต้องการใน DOM Tree:
+    // สร้าง Element
+    var newItem = document.createElement("li");
+    newItem.textContent = "New Todo Item";
+    // เพิ่ม Element ลงใน DOM
+    var todoList = document.getElementById("todo-list");
+    todoList.appendChild(newItem);
+
+    // ลบ Todo Item:
+    var todoItemToRemove = document.getElementById("todo-item-id");
+    todoItemToRemove.parentNode.removeChild(todoItemToRemove);
+
+    // อัพเดทสถานะ Todo Item:
+    var todoItem = document.getElementById("todo-item-id");
+    todoItem.classList.toggle("completed"); // สลับคลาสเพื่อแสดงสถานะทำเสร็จ
+
+    // อัพเดทจำนวน Todo Items:
+    var totalItems = document.getElementsByClassName("todo-item").length;
+    console.log("Total Todo Items: " + totalItems);
+
+    // จัดการกับ Events:
+    var addButton = document.getElementById("add-button");
+    addButton.addEventListener("click", function () {
+      // โค้ดที่ต้องการให้ทำเมื่อคลิกปุ่ม
+    });
+  </script> -->
+</html>
